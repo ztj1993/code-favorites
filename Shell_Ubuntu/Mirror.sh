@@ -48,4 +48,8 @@ OS_VERSION=$(cat /etc/os-release | grep VERSION_ID | cut -d '"' -f 2 |  awk -F'.
 
 echo "$(eval echo \"\${mirror_${OS_VERSION}}\")" | sudo tee /etc/apt/sources.list
 
-sleep 5
+sleep 2
+
+sudo apt-get update
+
+sleep 2
