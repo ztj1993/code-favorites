@@ -4,7 +4,7 @@
 # Name: 设置允许 Root SSH
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl -sSL https://raw.githubusercontent.com/ztj1993/CodeFavorites/master/Shell_Ubuntu/SelfUserSudo.sh | sh
+# Use: curl -sSL https://raw.githubusercontent.com/ztj1993/CodeFavorites/master/Shell_Ubuntu/AllowRootSsh.sh | sh
 ###############
 
 ### 设置 Root 用户密码
