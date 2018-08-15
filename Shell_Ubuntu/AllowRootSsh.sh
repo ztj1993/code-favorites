@@ -4,11 +4,11 @@
 # Name: 设置允许 Root SSH
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl -sSL https://raw.githubusercontent.com/ztj1993/CodeFavorites/master/Shell_Ubuntu/AllowRootSsh.sh | sh
+# Use: curl -sSL  http://dwz.cn/Y1PxZtyb > /tmp/AllowRootSsh && bash /tmp/AllowRootSsh
 ###############
 
 ### 设置 Root 用户密码
-[ "${RootNewPwd}" == "" ] && echo -en ">>> Please enter the new root user password:"
+[ "${RootNewPwd}" == "" ] && echo -en ">>> Please enter the new root user password: "
 [ "${RootNewPwd}" == "" ] && read RootNewPwd
 
 ### 安装必要软件

@@ -4,12 +4,13 @@
 # Name: 制作本地源
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl http://dwz.cn/UnyZAXjf > /tmp/LocalMirror && bash /tmp/LocalMirror
+# Use: curl -sSL http://dwz.cn/UnyZAXjf > /tmp/LocalMirror && bash /tmp/LocalMirror
 ###############
 
 ### 设置 Root 用户密码
-[ "${BasePath}" == "" ] && echo -en ">>> Please enter the base path:"
+[ "${BasePath}" == "" ] && echo -en ">>> Please enter the base path: "
 [ "${BasePath}" == "" ] && read BasePath
+BasePath=${BasePath:-/var/spool/apt-mirror}
 
 sudo apt-get install -y apt-mirror
 
@@ -26,3 +27,6 @@ clean http://ppa.launchpad.net/ondrej/php/ubuntu
 echo "
 file://${BasePath}/mirror/ppa.launchpad.net/ondrej/php/ubuntu
 " | sudo tee /etc/apt/sources.list.d/php.list
+
+[ ! -d ${BasePath} ] && sudo mkdir ${BasePath}
+[ ! -d ${BasePath}/mirror ] && sudo cp -fR /var/spool/apt-mirror/* ${BasePath}
