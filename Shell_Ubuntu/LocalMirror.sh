@@ -4,17 +4,25 @@
 # Name: 制作本地源
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl -sSL https://raw.githubusercontent.com/ztj1993/CodeFavorites/master/Shell_Ubuntu/LocalMirror.sh | sh
+# Use: curl http://dwz.cn/UnyZAXjf > /tmp/LocalMirror && bash /tmp/LocalMirror
 ###############
+
+### 设置 Root 用户密码
+[ "${BasePath}" == "" ] && echo -en ">>> Please enter the base path:"
+[ "${BasePath}" == "" ] && read BasePath
 
 sudo apt-get install -y apt-mirror
 
 echo "
-deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
+set base_path ${BasePath}
+set run_postmirror 0
+set nthreads 20
+set _tilde 0
 
+deb http://ppa.launchpad.net/ondrej/php/ubuntu xenial main
 clean http://ppa.launchpad.net/ondrej/php/ubuntu
 " | sudo tee /etc/apt/mirror.list
 
 echo "
-file:///var/spool/apt-mirror/mirror/ppa.launchpad.net/ondrej/php/ubuntu
+file://${BasePath}/mirror/ppa.launchpad.net/ondrej/php/ubuntu
 " | sudo tee /etc/apt/sources.list.d/php.list
