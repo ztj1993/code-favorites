@@ -4,7 +4,7 @@
 # Name: Ubuntu 设置本地映像
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl -sSL https://raw.githubusercontent.com/ztj1993/CodeFavorites/master/Shell_Ubuntu/Mirror.sh | sh
+# Use: curl -sSL http://dwz.cn/2jtvm8PX > /tmp/Mirror && bash /tmp/Mirror
 ###############
 
 ### 设置镜像源

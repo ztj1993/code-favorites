@@ -4,7 +4,7 @@
 # Name: 设置当前用户免 sudo 密码
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl -sSL https://raw.githubusercontent.com/ztj1993/CodeFavorites/master/Shell_Ubuntu/SelfUserSudo.sh | sh
+# Use: curl -sSL http://dwz.cn/cwtMKi99 > /tmp/SelfUserSudo && bash /tmp/SelfUserSudo
 ###############
 
 UserName="$USER"

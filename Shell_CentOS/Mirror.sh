@@ -4,7 +4,7 @@
 # Name: CentOS 设置本地映像
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl -sSL https://raw.githubusercontent.com/ztj1993/CodeFavorites/master/Shell_CentOS/Mirror.sh | sh
+# Use: curl -sSL http://dwz.cn/XfSHAWyR > /tmp/Mirror && bash /tmp/Mirror
 ###############
 
 ### 设置变量

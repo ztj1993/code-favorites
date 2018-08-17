@@ -4,7 +4,7 @@
 # Name: 设置允许 Root SSH
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl -sSL  http://dwz.cn/Y1PxZtyb > /tmp/AllowRootSsh && bash /tmp/AllowRootSsh
+# Use: curl -sSL http://dwz.cn/Y1PxZtyb > /tmp/AllowRootSsh && bash /tmp/AllowRootSsh
 ###############
 
 ### 设置 Root 用户密码
