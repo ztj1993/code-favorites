@@ -24,7 +24,7 @@ sudo sed -i "s@^PasswordAuthentication.*@PasswordAuthentication yes@" /etc/ssh/s
 
 ### 生成密钥
 if [ ! -f /etc/ssh/ssh_host_rsa_key ]; then
-    sudo dpkg-reconfigure openssh-server
+    sudo DEBIAN_FRONTEND=noninteractive dpkg-reconfigure openssh-server
     [ $? -ne 0 ] && echo ">>>>>> Error:$(basename ${BASH_SOURCE[0]%.*}) - ($LINENO)" && exit 1
 fi
 
