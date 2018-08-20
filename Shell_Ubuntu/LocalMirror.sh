@@ -25,7 +25,7 @@ clean http://ppa.launchpad.net/ondrej/php/ubuntu
 " | sudo tee /etc/apt/mirror.list
 
 echo "
-file://${BasePath}/mirror/ppa.launchpad.net/ondrej/php/ubuntu
+deb file://${BasePath}/mirror/ppa.launchpad.net/ondrej/php/ubuntu xenial main
 " | sudo tee /etc/apt/sources.list.d/php.list
 
 [ ! -d ${BasePath} ] && sudo mkdir ${BasePath}
