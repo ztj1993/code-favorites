@@ -7,19 +7,23 @@
 # Use: curl -sSL http://dwz.cn/BFLKMuNv > /tmp/LocalMirror && bash /tmp/LocalMirror
 ###############
 
-### 设置 Root 用户密码
-[ "${BasePath}" == "" ] && echo -en ">>> Please enter the base path: "
-[ "${BasePath}" == "" ] && read BasePath
-BasePath=${BasePath:-/var/spool/apt-mirror}
+### 设置本地源路径
+[ "${AptMirrorBasePath}" == "" ] && echo -en ">>> Please enter the base path: "
+[ "${AptMirrorBasePath}" == "" ] && read AptMirrorBasePath
+AptMirrorBasePath=${AptMirrorBasePath:-/var/spool/apt-mirror}
 
-sudo apt-get install -y apt-mirror
+### 安装软件
+type apt-mirror > /dev/null 2>&1
+[ $? -ne 0 ] && sudo apt-get install -y apt-mirror
 
+### 设置配置文件
 echo "
-set base_path ${BasePath}
+set base_path ${AptMirrorBasePath}
 set run_postmirror 0
 set nthreads 20
 set _tilde 0
 " | sudo tee /etc/apt/mirror.list
 
-[ ! -d ${BasePath} ] && sudo mkdir ${BasePath}
-[ ! -d ${BasePath}/mirror ] && sudo cp -fR /var/spool/apt-mirror/* ${BasePath}
+### 设置文件存储路径
+[ ! -d ${AptMirrorBasePath} ] && sudo mkdir ${AptMirrorBasePath}
+[ ! -d ${AptMirrorBasePath}/mirror ] && sudo cp -fR /var/spool/apt-mirror/* ${AptMirrorBasePath}
