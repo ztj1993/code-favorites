@@ -4,7 +4,7 @@
 # Name: 制作本地源
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl -sSL http://dwz.cn/BFLKMuNv > /tmp/LocalMirror && bash /tmp/LocalMirror
+# Use: curl -sSL http://dwz.cn/BFLKMuNv > /tmp/AptMirror && bash /tmp/AptMirror
 ###############
 
 ### 设置本地源路径
