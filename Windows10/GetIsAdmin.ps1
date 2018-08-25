@@ -2,7 +2,10 @@
 # Name: 获取是否为管理员
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: PowerShell -Command "PowerShell -Command (Invoke-WebRequest http://dwz.cn/XF8rOhGn).content"
+# Use:
+#     $url = 'http://dwz.cn/XF8rOhGn'
+#     $str = [Text.Encoding]::UTF8.GetString((Invoke-WebRequest $url).RawContentStream.ToArray())
+#     PowerShell -Command $str
 ###############
 
 $windowsIdentity = [System.Security.Principal.WindowsIdentity]::GetCurrent()

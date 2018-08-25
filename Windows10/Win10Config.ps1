@@ -2,11 +2,16 @@
 # Name: 配置 Windows10 & PowerShell
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: PowerShell -Command "PowerShell -Command (Invoke-WebRequest http://dwz.cn/i50Ky2Yd).content"
+# Use:
+#     $url = 'http://dwz.cn/i50Ky2Yd'
+#     $str = [Text.Encoding]::UTF8.GetString((Invoke-WebRequest $url).RawContentStream.ToArray())
+#     PowerShell -Command $str
 ###############
 
 # 请以管理员运行脚本
-$isAdmin = PowerShell -Command (Invoke-WebRequest 'http://dwz.cn/XF8rOhGn').content
+$url = 'http://dwz.cn/XF8rOhGn'
+$str = [Text.Encoding]::UTF8.GetString((Invoke-WebRequest $url).RawContentStream.ToArray())
+$isAdmin = PowerShell -Command $str
 if ($isAdmin -eq 'False')
 {
     echo 'Please run this script to the administrator'
