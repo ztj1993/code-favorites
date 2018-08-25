@@ -19,17 +19,23 @@ if ( [String]::IsNullOrEmpty($env:UbuntuDir))
 # 下载应用
 if (-Not(Test-Path $env:UbuntuDir/Ubuntu.zip))
 {
-    Invoke-WebRequest -Uri 'https://aka.ms/wsl-ubuntu-1604' -OutFile $env:UbuntuDir/Ubuntu.zip -UseBasicParsing
+    Invoke-WebRequest -Uri 'https://aka.ms/wsl-ubuntu-1604' -OutFile $env:UbuntuDir\Ubuntu.zip -UseBasicParsing
+}
+
+if (-Not(Test-Path $env:UbuntuDir\Ubuntu.zip))
+{
+    echo 'File download error'
+    exit (1)
 }
 
 # 解压应用
-if (-Not(Test-Path $env:UbuntuDir/Ubuntu))
+if (-Not(Test-Path $env:UbuntuDir\Ubuntu))
 {
-    Expand-Archive $env:UbuntuDir/Ubuntu.zip $env:UbuntuDir/Ubuntu
+    Expand-Archive $env:UbuntuDir\Ubuntu.zip $env:UbuntuDir\Ubuntu
 }
 
 # 清理旧的应用
-$env:UbuntuDir/Ubuntu/ubuntu.exe clean
+PowerShell -Command $env:UbuntuDir\Ubuntu\ubuntu.exe clean
 
 # 运行应用
-$env:UbuntuDir/Ubuntu/ubuntu.exe
+PowerShell -Command $env:UbuntuDir\Ubuntu\ubuntu.exe
