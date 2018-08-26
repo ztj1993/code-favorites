@@ -39,7 +39,7 @@ fi
 if [ "${PhpMainVersion}" == "" ]; then
     SelectMenuItems=("7.1", "5.6")
     SelectMenuTitle="请选择主 PHP 版本"
-    curl -sSL http://dwz.cn/iRtqAy8Z > /tmp/SelectMenu && source /tmp/SelectMenu
+    curl -sSL http://dwz.cn/tJvCyBGb > /tmp/SelectMenu && source /tmp/SelectMenu
     MainVersion=${SelectMenuItem}
 fi
 [ "${PhpMainVersion}" == "" ] && echo ">>>>> Error: You selected the version does not exist" && exit 1
