@@ -22,4 +22,8 @@ if ($isAdmin -eq 'False')
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
 
 # 启用 Windows 10 子系统 Linux
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+$FeatureName = "Microsoft-Windows-Subsystem-Linux"
+if ((Get-WindowsOptionalFeature -Online -FeatureName $FeatureName).State -eq "Enabled")
+{
+    Enable-WindowsOptionalFeature -Online -FeatureName $FeatureName
+}
