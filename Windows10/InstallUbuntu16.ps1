@@ -16,10 +16,16 @@ if ( [String]::IsNullOrEmpty($env:UbuntuDir))
     $env:UbuntuDir = $env:USERPROFILE
 }
 
+# 设置 Ubuntu 应用包下载地址
+if ( [String]::IsNullOrEmpty($env:UbuntuUri))
+{
+    $env:UbuntuUri = 'https://aka.ms/wsl-ubuntu-1604'
+}
+
 # 下载应用
 if (-Not(Test-Path $env:UbuntuDir/Ubuntu.zip))
 {
-    Invoke-WebRequest -Uri 'https://aka.ms/wsl-ubuntu-1604' -OutFile $env:UbuntuDir\Ubuntu.zip -UseBasicParsing
+    Invoke-WebRequest -Uri $env:UbuntuUri -OutFile $env:UbuntuDir\Ubuntu.zip -UseBasicParsing
 }
 
 if (-Not(Test-Path $env:UbuntuDir\Ubuntu.zip))
