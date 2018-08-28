@@ -7,7 +7,7 @@
 # Use: curl -sSL http://dwz.cn/62Vd0UYa > /tmp/PrivoxySocks5 && bash /tmp/PrivoxySocks5
 ###############
 
-### 设置 Root 用户密码
+### 设置 socks5
 [ "${socks5}" == "" ] && echo -en ">>> Please enter the socks5: "
 [ "${socks5}" == "" ] && read socks5
 
