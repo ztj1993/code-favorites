@@ -23,7 +23,7 @@ if ( [String]::IsNullOrEmpty($env:UbuntuUri))
 }
 
 # 下载应用
-if (-Not(Test-Path $env:UbuntuDir/Ubuntu.zip))
+if (-Not(Test-Path $env:UbuntuDir\Ubuntu.zip))
 {
     Invoke-WebRequest -Uri $env:UbuntuUri -OutFile $env:UbuntuDir\Ubuntu.zip -UseBasicParsing
 }
@@ -35,7 +35,7 @@ if (-Not(Test-Path $env:UbuntuDir\Ubuntu.zip))
 }
 
 # 解压应用
-if (-Not(Test-Path $env:UbuntuDir\Ubuntu))
+if ((Get-FileHash $env:UbuntuDir\Ubuntu.zip -Algorithm MD5).Hash -ne 'F59BD7D5A8BE43E4E3F42C71640D2D17')
 {
     Expand-Archive $env:UbuntuDir\Ubuntu.zip $env:UbuntuDir\Ubuntu
 }
