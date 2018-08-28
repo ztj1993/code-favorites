@@ -23,7 +23,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
 
 # 启用 Windows 10 子系统 Linux
 $FeatureName = 'Microsoft-Windows-Subsystem-Linux'
-if ((Get-WindowsOptionalFeature -Online -FeatureName $FeatureName).State -eq 'Enabled')
+if ((Get-WindowsOptionalFeature -Online -FeatureName $FeatureName).State -ne 'Enabled')
 {
     Enable-WindowsOptionalFeature -Online -FeatureName $FeatureName
 }
