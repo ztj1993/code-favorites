@@ -5,10 +5,10 @@
 ###############
 
 # 请以管理员运行脚本
-$url = 'http://dwz.cn/XF8rOhGn'
-$str = [Text.Encoding]::UTF8.GetString((Invoke-WebRequest $url).RawContentStream.ToArray())
-$isAdmin = PowerShell -Command $str
-if ($isAdmin -eq 'False')
+$windowsIdentity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
+$windowsPrincipal = new-object 'System.Security.Principal.WindowsPrincipal' $windowsIdentity
+$isAdmin = $windowsPrincipal.IsInRole('Administrators')
+if (-not($isAdmin))
 {
     echo 'Please run this script to the administrator'
     exit (1)
