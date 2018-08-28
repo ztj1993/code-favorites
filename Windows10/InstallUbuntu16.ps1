@@ -34,11 +34,15 @@ if (-Not(Test-Path $env:UbuntuDir\Ubuntu.zip))
     exit (1)
 }
 
-# 解压应用
+# 校验应用
 if ((Get-FileHash $env:UbuntuDir\Ubuntu.zip -Algorithm MD5).Hash -ne 'F59BD7D5A8BE43E4E3F42C71640D2D17')
 {
-    Expand-Archive $env:UbuntuDir\Ubuntu.zip $env:UbuntuDir\Ubuntu
+    echo 'File md5 check failure'
+    exit (1)
 }
+
+# 解压应用
+Expand-Archive $env:UbuntuDir\Ubuntu.zip $env:UbuntuDir\Ubuntu
 
 # 清理旧的应用
 PowerShell -Command $env:UbuntuDir\Ubuntu\ubuntu.exe clean
