@@ -2,10 +2,6 @@
 # Name: 安装 Ubuntu 16 版本
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use:
-#     $url = 'http://dwz.cn/hqp2PM1S'
-#     $str = [Text.Encoding]::UTF8.GetString((Invoke-WebRequest $url).RawContentStream.ToArray())
-#     PowerShell -Command $str
 ###############
 
 $ProgressPreference = 'SilentlyContinue'

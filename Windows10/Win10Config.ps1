@@ -2,10 +2,6 @@
 # Name: 配置 Windows10 & PowerShell
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use:
-#     $url = 'http://dwz.cn/i50Ky2Yd'
-#     $str = [Text.Encoding]::UTF8.GetString((Invoke-WebRequest $url).RawContentStream.ToArray())
-#     PowerShell -Command $str
 ###############
 
 # 请以管理员运行脚本
