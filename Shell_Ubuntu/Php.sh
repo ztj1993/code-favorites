@@ -13,7 +13,7 @@
 AptMirrorUri=${AptMirrorUri:-http://ppa.launchpad.net/ondrej/php/ubuntu}
 
 ### 设置镜像源
-echo "deb ${AptMirrorUri} xenial main" | sudo tee /etc/apt/sources.list.d/php.list
+echo "deb ${AptMirrorUri} $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
 
 # 安装 7.1
 php7.1 -v > /dev/null 2>&1
