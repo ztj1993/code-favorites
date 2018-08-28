@@ -4,7 +4,7 @@
 # Name: 安装 Php 多版本
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl -sSL http://dwz.cn/noqEPYs6 > /tmp/SelectMenu && bash /tmp/Apache
+# Use: curl -sSL http://dwz.cn/noqEPYs6 > /tmp/Apache && bash /tmp/Apache
 ###############
 
 # 安装 Apache
