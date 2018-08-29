@@ -45,7 +45,7 @@ else
 if (-Not(Test-Path $env:UbuntuInstallDir))
 {
     echo 'Ubuntu app unzip ......'
-    Expand-Archive $env:UbuntuDir\Ubuntu.zip $env:UbuntuDir\Ubuntu
+    Expand-Archive $env:UbuntuDownloadPath $env:UbuntuInstallDir
 }
 else
 {
