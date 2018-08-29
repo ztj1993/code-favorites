@@ -7,14 +7,11 @@
 # Use: curl -sSL http://dwz.cn/VGuW5dDf > /tmp/Php && bash /tmp/Php
 ###############
 
-### 设置源路径
-[ "${AptMirrorUri}" == "" ] && echo -en ">>> Please enter the apt mirror uri: "
-[ "${AptMirrorUri}" == "" ] && read AptMirrorUri
-AptMirrorUri=${AptMirrorUri:-http://ppa.launchpad.net/ondrej/php/ubuntu}
-
 ### 设置镜像源
-echo "deb ${AptMirrorUri} $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
-sudo apt-get -y update
+if [ "${AptMirrorPhpDeb}" != "" ]; then
+    echo "${AptMirrorPhpDeb}" | sudo tee /etc/apt/sources.list.d/php.list
+    sudo apt-get -y update
+fi
 
 # 安装 7.1
 php7.1 -v > /dev/null 2>&1
