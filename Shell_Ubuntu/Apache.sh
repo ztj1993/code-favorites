@@ -15,7 +15,7 @@ else
     echo ">>>>> Info: The apache2 has been installed"
 fi
 
-# 设置 Apache2
+# 解决：Protocol not available: AH00076: Failed to enable APR_TCP_DEFER_ACCEPT
 grep "^AcceptFilter http none" /etc/apache2/apache2.conf > /dev/null 2>&1
 [ $? -ne 0 ] && echo "AcceptFilter http none" | sudo tee -a /etc/apache2/apache2.conf
 grep "^AcceptFilter https none" /etc/apache2/apache2.conf > /dev/null 2>&1

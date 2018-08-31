@@ -16,8 +16,8 @@ fi
 # 安装 7.1
 php7.1 -v > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-    sudo apt-get install -y php7.1-fpm php7.1-mysql php7.1-curl php7.1-gd php7.1-mbstring php7.1-mcrypt php7.1-xml
-    sudo apt-get install -y php7.1-zip php7.1-dev
+    sudo apt-get install -y php7.1 php7.1-cli php7.1-fpm php7.1-mysql php7.1-curl php7.1-gd php7.1-mbstring
+    sudo apt-get install -y php7.1-mcrypt php7.1-xml php7.1-zip php7.1-dev
     sudo apt-get install -y libapache2-mod-php7.1
 else
     echo ">>>>> Info: The php 7.1 has been installed"
@@ -26,8 +26,8 @@ fi
 # 安装 5.6
 php5.6 -v > /dev/null 2>&1
 if [ $? -ne 0 ]; then
-    sudo apt-get install -y php5.6-fpm php5.6-mysql php5.6-curl php5.6-gd php5.6-mbstring php5.6-mcrypt php5.6-xml
-    sudo apt-get install -y php5.6-zip php5.6-dev
+    sudo apt-get install -y php5.6 php5.6-cli php5.6-fpm php5.6-mysql php5.6-curl php5.6-gd php5.6-mbstring
+    sudo apt-get install -y  php5.6-mcrypt php5.6-xml php5.6-zip php5.6-dev
     sudo apt-get install -y libapache2-mod-php5.6
 else
     echo ">>>>> Info: The php 5.6 has been installed"
