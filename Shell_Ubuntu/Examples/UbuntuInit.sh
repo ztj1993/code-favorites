@@ -18,4 +18,3 @@ curl -sSL "${BaseUri}/AllowRootSsh.sh" > /tmp/AllowRootSsh && bash /tmp/AllowRoo
 
 ### 更新系统
 sudo apt-get -y update
-sudo apt-get -y upgrade
