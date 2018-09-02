@@ -20,4 +20,7 @@ sudo mkdir /var/cache/apt/archives_mirror
 
 ### 制作映像源
 sudo cp /var/cache/apt/archives/*.deb ${MirrorDir}
-dpkg-scanpackages ${MirrorDir} /dev/null | sudo tee ${MirrorDir}/Packages && sudo gzip ${MirrorDir}/Packages
+dpkg-scanpackages ${MirrorDir} /dev/null | sudo tee ${MirrorDir}/Packages
+cat ${MirrorDir}/Packages | sed "s/Filename: \.\//Filename: /g"
+sudo sed -i "s@${MirrorDir}/@@" ${MirrorDir}/Packages
+sudo gzip ${MirrorDir}/Packages
