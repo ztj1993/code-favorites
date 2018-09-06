@@ -1,11 +1,17 @@
 #!/bin/bash
 
 ###############
-# Name: 安装 Php 多版本
+# Name: 安装 Apache
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
 # Use: curl -sSL http://dwz.cn/noqEPYs6 > /tmp/Apache && bash /tmp/Apache
 ###############
+
+# 配置 Apache 安装源
+if [ "${AptMirrorApacheDeb}" != "" ]; then
+    echo "${AptMirrorApacheDeb}" | sudo tee /etc/apt/sources.list.d/apache.list
+    sudo apt-get -y update
+fi
 
 # 安装 Apache
 apache2 -v > /dev/null 2>&1
