@@ -13,40 +13,51 @@ if [ "${AptMirrorPhpDeb}" != "" ]; then
     sudo apt-get -y update
 fi
 
-# 安装 7.1
-php7.1 -v > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-    sudo apt-get install -y php7.1 php7.1-cli php7.1-fpm php7.1-mysql php7.1-curl php7.1-gd php7.1-mbstring
-    sudo apt-get install -y php7.1-mcrypt php7.1-xml php7.1-zip php7.1-dev
-    sudo apt-get install -y libapache2-mod-php7.1
-else
-    echo ">>>>> Info: The php 7.1 has been installed"
+### 设置变量
+modules=(
+    "cli" "common" "fpm" "dev" "mysql" "sqlite3" "curl" "gd" "mbstring" "json" "ldap" "opcache"
+    "pgsql" "readline" "bcmath" "mcrypt" "soap" "zip"
+)
+versions=("5.6" "7.0" "7.1")
+packages=()
+installs=()
+
+### 获取安装的软件
+for version in ${versions[@]}
+do
+    packages=(${packages[*]} "php${version}" "libapache2-mod-php${version}")
+    for module in ${modules[@]}
+    do
+        packages=(${packages[*]} "php${version}-${module}")
+    done
+done
+
+### 清理已经安装的软件和不存在的软件包
+for package in ${packages[@]}
+do
+    dpkg -l ${package} > /dev/null 2>&1
+    [ $? -eq 0 ] && continue
+    apt-cache show ${package} > /dev/null 2>&1
+    [ $? -ne 0 ] && continue
+    installs=(${installs[*]} ${package})
+done
+
+### 安装软件
+if [ ${#installs[@]} -ne 0 ]; then
+    echo ">>> Installs: ${installs[*]}"
+    sudo apt-get install -y ${installs[*]}
 fi
 
-# 安装 5.6
-php5.6 -v > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-    sudo apt-get install -y php5.6 php5.6-cli php5.6-fpm php5.6-mysql php5.6-curl php5.6-gd php5.6-mbstring
-    sudo apt-get install -y  php5.6-mcrypt php5.6-xml php5.6-zip php5.6-dev
-    sudo apt-get install -y libapache2-mod-php5.6
-else
-    echo ">>>>> Info: The php 5.6 has been installed"
-fi
+### 选择主版本
+[ "${PhpMainVersion}" == "" ] && PhpMainVersion=${versions[0]}
 
-# 选择主版本
-if [ "${PhpMainVersion}" == "" ]; then
-    SelectMenuItems=("7.1" "5.6")
-    SelectMenuTitle="请选择主 PHP 版本"
-    curl -sSL http://dwz.cn/tJvCyBGb > /tmp/SelectMenu && source /tmp/SelectMenu
-    PhpMainVersion=${SelectMenuItem}
-fi
-[ "${PhpMainVersion}" == "" ] && echo ">>>>> Error: You selected the version does not exist" && exit 1
-
-# 设置 Apache
+### 设置 Apache
 apache2 -v > /dev/null 2>&1
 if [ $? -eq 0 ]; then
-    sudo a2dismod php7.1
-    sudo a2dismod php5.6
+    for version in ${versions[@]}
+    do
+        sudo a2dismod "php${version}"
+    done
     sudo a2enmod php${PhpMainVersion}
     sudo service apache2 restart
 fi
@@ -57,4 +68,4 @@ sudo update-alternatives --set phpize /usr/bin/phpize${PhpMainVersion}
 sudo update-alternatives --set php-config /usr/bin/php-config${PhpMainVersion}
 
 # 删除配置文件
-rm -rf /etc/apt/sources.list.d/php.list
+sudo rm -rf /etc/apt/sources.list.d/php.list
