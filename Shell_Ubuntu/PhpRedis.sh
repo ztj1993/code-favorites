@@ -36,7 +36,9 @@ sudo make install
 echo "extension=redis.so" | sudo tee ${phpEtcPath}/mods-available/redis.ini
 for dir in $(ls ${phpEtcPath})
 do
-    if [ -d ${phpEtcPath}/${dir}/conf.d ] && [ ! -f ${phpEtcPath}/${dir}/conf.d/redis.ini ]; then
+    [ "${dir}" == "mods-available" ] && continue
+    if [ -d ${phpEtcPath}/${dir}/conf.d ]; then
+        sudo rm -rf ${phpEtcPath}/${dir}/conf.d/redis.ini
         sudo ln -s ${phpEtcPath}/mods-available/redis.ini ${phpEtcPath}/${dir}/conf.d/redis.ini
     fi
 done
