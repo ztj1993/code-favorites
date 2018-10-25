@@ -8,10 +8,9 @@
 ###############
 
 ### 设置镜像源
-if [ "${AptMirrorPhpDeb}" != "" ]; then
-    echo "${AptMirrorPhpDeb}" | sudo tee /etc/apt/sources.list.d/php.list
-    sudo apt-get -y update
-fi
+PhpMirror=${PhpMirror:-"deb http://ppa.launchpad.net/ondrej/php/ubuntu/ $(lsb_release -sc) main"}
+echo "${PhpMirror}" | sudo tee /etc/apt/sources.list.d/php.list
+sudo apt-get -y update
 
 ### 设置变量
 modules=(
