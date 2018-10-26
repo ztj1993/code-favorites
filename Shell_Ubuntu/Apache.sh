@@ -7,11 +7,10 @@
 # Use: curl -sSL http://dwz.cn/noqEPYs6 > /tmp/Apache && bash /tmp/Apache
 ###############
 
-# 配置 Apache 安装源
-if [ "${AptMirrorApacheDeb}" != "" ]; then
-    echo "${AptMirrorApacheDeb}" | sudo tee /etc/apt/sources.list.d/apache.list
-    sudo apt-get -y update
-fi
+### 设置镜像源
+ApacheMirror=${ApacheMirror:-"deb http://ppa.launchpad.net/ondrej/apache2/ubuntu/ $(lsb_release -sc) main"}
+echo "${ApacheMirror}" | sudo tee /etc/apt/sources.list.d/apache.list
+sudo apt-get -y update
 
 # 安装 Apache
 apache2 -v > /dev/null 2>&1
