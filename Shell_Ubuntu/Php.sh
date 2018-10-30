@@ -7,6 +7,10 @@
 # Use: curl -sSL http://dwz.cn/VGuW5dDf > /tmp/Php && bash /tmp/Php
 ###############
 
+### 导入密钥
+apt-key list | grep "E5267A6C" > /dev/null 2>&1
+[ $? -ne 0 ] && sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
+
 ### 设置镜像源
 PhpMirror=${PhpMirror:-"deb http://ppa.launchpad.net/ondrej/php/ubuntu/ $(lsb_release -sc) main"}
 echo "${PhpMirror}" | sudo tee /etc/apt/sources.list.d/php.list
