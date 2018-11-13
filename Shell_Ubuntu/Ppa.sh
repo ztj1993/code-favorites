@@ -15,6 +15,14 @@ if [ "${1}" == "mqtt" ]; then
     Packages="mosquitto mosquitto-clients"
 fi
 
+if [ "${1}" == "python37" ]; then
+    SoftwareName="python37"
+    UserName="jonathonf"
+    ProjectName="python-3.7"
+    ProjectKey="8CF63AD3F06FC659"
+    Packages="python3.7"
+fi
+
 ### 设置变量
 [ "${SoftwareName}" == "" ] && echo -en ">>> Please enter the software name: "
 [ "${SoftwareName}" == "" ] && read SoftwareName
