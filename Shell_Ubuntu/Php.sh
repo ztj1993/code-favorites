@@ -19,7 +19,7 @@ sudo apt-get -y update
 ### 设置变量
 modules=(
     "cli" "common" "fpm" "dev" "mysql" "sqlite3" "curl" "gd" "mbstring" "json" "ldap" "opcache"
-    "pgsql" "readline" "bcmath" "mcrypt" "soap" "zip"
+    "pgsql" "readline" "bcmath" "mcrypt" "soap" "zip" "xml"
 )
 versions=("5.6" "7.0" "7.1")
 packages=()
