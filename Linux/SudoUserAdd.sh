@@ -16,4 +16,4 @@ id -u ${SudoUserName} > /dev/null 2>&1
 [ $? -ne 0 ] && sudo useradd -m ${SudoUserName}
 
 ### 赋予用户 sudo 权限
-echo "${SudoUserName} ALL=(ALL) ALL" | sudo tee /etc/sudoers
+echo "${SudoUserName} ALL=(ALL) ALL" | sudo tee -a /etc/sudoers
