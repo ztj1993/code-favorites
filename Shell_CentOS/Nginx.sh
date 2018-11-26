@@ -16,6 +16,7 @@ PackageUri="http://nginx.org/packages/centos/${OS_VERSION}/noarch/RPMS"
 sudo rpm -Uvh "${PackageUri}/${PackageName}.rpm"
 
 ### 安装更新软件
+yum makecache
 sudo yum install -y nginx
 
 ### 配置系统
