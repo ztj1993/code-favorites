@@ -1,12 +1,13 @@
 ###############
-# Name: 配置 Windows10 & PowerShell
+# Name: Config Windows10
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
+# Use: PowerShell iex(New-Object Net.WebClient).DownloadString('http://dwz.cn/i50Ky2Yd')
 ###############
 
-# 请以管理员运行脚本
+# Is Administrator
 $windowsIdentity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$windowsPrincipal = new-object 'System.Security.Principal.WindowsPrincipal' $windowsIdentity
+$windowsPrincipal = New-Object System.Security.Principal.WindowsPrincipal($windowsIdentity)
 $isAdmin = $windowsPrincipal.IsInRole('Administrators')
 if (-not($isAdmin))
 {
@@ -14,10 +15,14 @@ if (-not($isAdmin))
     exit (1)
 }
 
-# 允许 PowerShell 运行文件
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+# Allow execution of powershell file
+$isExecFile = Get-ExecutionPolicy
+if ($isExecFile -ne 'RemoteSigned')
+{
+    Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Force
+}
 
-# 启用 Windows 10 子系统 Linux
+# Enabling Windows 10 Subsystem
 $FeatureName = 'Microsoft-Windows-Subsystem-Linux'
 if ((Get-WindowsOptionalFeature -Online -FeatureName $FeatureName).State -ne 'Enabled')
 {

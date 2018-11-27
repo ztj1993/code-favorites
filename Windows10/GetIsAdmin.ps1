@@ -1,9 +1,11 @@
 ###############
-# Name: 获取是否为管理员
+# Name: Is Administrator
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
+# Use: PowerShell iex(New-Object Net.WebClient).DownloadString('http://dwz.cn/XF8rOhGn')
 ###############
 
 $windowsIdentity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
-$windowsPrincipal = new-object 'System.Security.Principal.WindowsPrincipal' $windowsIdentity
-return $windowsPrincipal.IsInRole('Administrators')
+$windowsPrincipal = New-Object System.Security.Principal.WindowsPrincipal($windowsIdentity)
+$isAdmin = $windowsPrincipal.IsInRole('Administrators')
+return $isAdmin
