@@ -1,17 +1,18 @@
 ###############
-# Name: 移除应用
+# Name: Remove Apps
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
+# Use: PowerShell iex(New-Object Net.WebClient).DownloadString('http://dwz.cn/F8vHK45i')
 ###############
 
 $reply = Read-Host "是否移除所有应用 [Y/n]"
 if ($reply -match "[yY]")
 {
-    # 获取所有权
+    # get path permission
     takeown /f %ProgramFiles%\WindowsApps /a /r /d Y
-    # 获取应用所有权
+    # get app permission
     icacls %ProgramFiles%\WindowsApps /grant "ALL APPLICATION PACKAGES:(OI)(CI)F" /t /q
-    # 删除所有应用
+    # delete all app
     Get-AppXProvisionedPackage -online | Remove-AppxProvisionedPackage -online 2>&1 | Out-Null
     Get-AppxPackage -AllUsers | Remove-AppxPackage 2>&1 | Out-Null
     exit 0
@@ -32,15 +33,15 @@ $Apps = @(
 }
 @{
     Name = "zunemusic";
-    DisplayName = "";
+    DisplayName = "Zune音乐";
 }
 @{
     Name = "solitairecollection";
-    DisplayName = "";
+    DisplayName = "微软纸牌";
 }
 @{
     Name = "zunevideo";
-    DisplayName = "";
+    DisplayName = "Zune视频";
 }
 @{
     Name = "bingfinance";
