@@ -11,3 +11,6 @@ ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)^
 taskkill /F /IM MicrosoftEdge.exe &
 taskkill /F /IM MicrosoftEdgeCP.exe &
 move "%windir%\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe" "%windir%\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe.bak"
+move "%windir%\SystemApps\Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe" "%windir%\SystemApps\Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe.bak"
+
+Pause

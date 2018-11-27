@@ -1,42 +1,44 @@
 @echo off
-title åˆ é™¤ OneDrive
+title É¾³ı OneDrive
 cls
 color 0A
 
-rem é‡å¯è„šæœ¬å¹¶ä»¥ç®¡ç†å‘˜è¿è¡Œ
+rem ÖØÆô½Å±¾²¢ÒÔ¹ÜÀíÔ±ÔËĞĞ
 %1 start "" mshta vbscript:CreateObject("Shell.Application").^
 ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)^
 (window.close)&&exit
 
-::æç¤ºç”¨æˆ·æ“ä½œ
+::ÌáÊ¾ÓÃ»§²Ù×÷
 echo.
-echo å³å°†åˆ é™¤OneDriveï¼Œæ˜¯å¦ç»§ç»­ï¼Ÿ
+echo ¼´½«É¾³ıOneDrive£¬ÊÇ·ñ¼ÌĞø£¿
 echo.
-echo æ˜¯ï¼šè¯·æŒ‰ä»»æ„é”®ç»§ç»­ã€‚
-echo å¦ï¼šç‚¹å‡»å³ä¸Šè§’ï¼Œå…³é—­æœ¬çª—å£ã€‚
+echo ÊÇ£ºÇë°´ÈÎÒâ¼ü¼ÌĞø¡£
+echo ·ñ£ºµã»÷ÓÒÉÏ½Ç£¬¹Ø±Õ±¾´°¿Ú¡£
 echo.
-echo å¦‚æœ‰å®‰å…¨è½¯ä»¶å¼¹å‡ºæ‹¦æˆªæç¤ºï¼Œæ”¾è¡Œå³å¯ã€‚
+echo ÈçÓĞ°²È«Èí¼şµ¯³öÀ¹½ØÌáÊ¾£¬·ÅĞĞ¼´¿É¡£
 pause
 
-:: ç»“æŸè¿›ç¨‹ (ä¸ç»“æŸæ— æ³•åˆ é™¤æ–‡ä»¶)
+:: ½áÊø½ø³Ì (²»½áÊøÎŞ·¨É¾³ıÎÄ¼ş)
 taskkill /f /im OneDrive.exe
 taskkill /f /im explorer.exe
 
-:: è°ƒç”¨å¸è½½åŠŸèƒ½
+:: µ÷ÓÃĞ¶ÔØ¹¦ÄÜ
 if exist %SYSTEMROOT%\SysWOW64\OneDriveSetup.exe (
     %SYSTEMROOT%\SysWOW64\OneDriveSetup.exe /uninstall
 ) else (
     %SYSTEMROOT%\System32\OneDriveSetup.exe /uninstall
 )
 
-:: åˆ é™¤æœ¬åœ°æ–‡ä»¶
+:: É¾³ı±¾µØÎÄ¼ş
 rd  /s /q "%USERPROFILE%\OneDrive"
 rd  /s /q "%LOCALAPPDATA%\Microsoft\OneDrive"
 rd  /s /q "%PROGRAMDATA%\Microsoft OneDrive"
 
-:: ç§»é™¤ä¾§è¾¹æ  OneDrive å›¾æ ‡
+:: ÒÆ³ı²à±ßÀ¸ OneDrive Í¼±ê
 reg delete "HKEY_CLASSES_ROOT\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f
 reg delete "HKEY_CLASSES_ROOT\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" /f
 
-:: é‡å¯ explorer
+:: ÖØÆô explorer
 start explorer
+
+Pause

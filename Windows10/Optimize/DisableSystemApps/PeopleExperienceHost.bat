@@ -1,12 +1,14 @@
 @echo off
-title ç¦ç”¨ PeopleExperienceHost
+title ½ûÓÃ PeopleExperienceHost
 cls
 color 0A
 
-rem é‡å¯è„šæœ¬å¹¶ä»¥ç®¡ç†å‘˜è¿è¡Œ
+rem ÖØÆô½Å±¾²¢ÒÔ¹ÜÀíÔ±ÔËĞĞ
 %1 start "" mshta vbscript:CreateObject("Shell.Application").^
 ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)^
 (window.close)&&exit
 
 taskkill /F /IM PeopleExperienceHost.exe &
 move "%windir%\SystemApps\Microsoft.Windows.PeopleExperienceHost_cw5n1h2txyewy" "%windir%\SystemApps\Microsoft.Windows.PeopleExperienceHost_cw5n1h2txyewy.bak"
+
+Pause

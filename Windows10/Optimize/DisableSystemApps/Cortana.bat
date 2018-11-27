@@ -1,9 +1,9 @@
 @echo off
-title ç¦ç”¨ Cortana
+title ½ûÓÃ Cortana
 cls
 color 0A
 
-rem é‡å¯è„šæœ¬å¹¶ä»¥ç®¡ç†å‘˜è¿è¡Œ
+rem ÖØÆô½Å±¾²¢ÒÔ¹ÜÀíÔ±ÔËĞĞ
 %1 start "" mshta vbscript:CreateObject("Shell.Application").^
 ShellExecute("cmd.exe","/c %~s0 ::","","runas",1)^
 (window.close)&&exit
@@ -12,3 +12,5 @@ taskkill /F /IM RemindersServer.exe &
 taskkill /F /IM SearchUI.exe &
 taskkill /F /IM PlacesServer.exe &
 move "%windir%\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy" "%windir%\SystemApps\Microsoft.Windows.Cortana_cw5n1h2txyewy.bak"
+
+Pause
