@@ -2,6 +2,7 @@
 # Name: 禁用服务
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
+# Use: PowerShell iex(New-Object Net.WebClient).DownloadString('http://dwz.cn/3F1DAOwT')
 ###############
 
 $Services = @(
@@ -109,7 +110,7 @@ $Services = @(
 
 foreach ($Service in $Services)
 {
-    $reply = Read-Host "是否禁用 - $( $Service.DisplayName ) --- $( $Service.Intro ) [Y/n]"
+    $reply = Read-Host "是否禁用 - $( $Service.DisplayName ) - $( $Service.Intro ) [Y/n]"
     if ($reply -match "[yY]")
     {
         Get-Service -Name $Service.Name | Set-Service -StartupType Disabled
