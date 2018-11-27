@@ -1,10 +1,10 @@
 #!/bin/bash
 
 ###############
-# Name: 安装 Composer
+# Name: 安装 PhpMyAdmin
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: curl -sSL https://dwz.cn/RmP7RLuL > /tmp/PhpUnit && bash /tmp/PhpUnit
+# Use: curl -sSL https://dwz.cn/lYYBmI5l > /tmp/PhpMyAdmin && bash /tmp/PhpMyAdmin
 ###############
 
 ### 定义变量
@@ -13,7 +13,6 @@ SoftwareVersion="4.8.3"
 SoftwareUrl="https://files.phpmyadmin.net/phpMyAdmin/${SoftwareVersion}/phpMyAdmin-${SoftwareVersion}-all-languages.tar.gz"
 SoftwarePackagePath="/tmp/phpMyAdmin-${SoftwareVersion}-all-languages.tar.gz"
 SoftwareInstallPath="${ShellDir}/phpMyAdmin"
-SoftwareConfigPath="${SoftwareInstallPath}/phpMyAdmin"
 
 ### 下载文件
 sudo rm -rf ${SoftwarePackagePath}

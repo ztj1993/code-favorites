@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ###############
-# Name: 安装 Composer
+# Name: 安装 PhpUnit
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
 # Use: curl -sSL https://dwz.cn/RmP7RLuL > /tmp/PhpUnit && bash /tmp/PhpUnit
