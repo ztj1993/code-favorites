@@ -90,6 +90,21 @@ $Services = @(
     DisplayName = "Xbox Live 网络服务";
     Intro = "建议禁用";
 }
+@{
+    Name = "DusmSvc";
+    DisplayName = "数据使用量";
+    Intro = "建议禁用";
+}
+@{
+    Name = "vmms";
+    DisplayName = "Hyper-V 虚拟机管理";
+    Intro = "建议禁用";
+}
+@{
+    Name = "CDPSvc";
+    DisplayName = "连接设备平台服务";
+    Intro = "建议禁用";
+}
 )
 
 foreach ($Service in $Services)
