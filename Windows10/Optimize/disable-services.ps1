@@ -1,5 +1,5 @@
 ###############
-# Name: ç¦ç”¨æœåŠ¡
+# Name: ½ûÓÃ·şÎñ
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
 # Use: PowerShell iex(New-Object Net.WebClient).DownloadString('http://dwz.cn/3F1DAOwT')
@@ -8,115 +8,115 @@
 $Services = @(
 @{
     Name = "diagnosticshub.standardcollector.service";
-    DisplayName = "Microsoft (R) è¯Šæ–­ä¸­å¿ƒæ ‡å‡†æ”¶é›†å™¨æœåŠ¡";
-    Intro = "å»ºè®®ç¦ç”¨ï¼Œè¯Šæ–­ä¸­å¿ƒæ ‡å‡†æ”¶é›†å™¨æœåŠ¡";
+    DisplayName = "Microsoft (R) Õï¶ÏÖĞĞÄ±ê×¼ÊÕ¼¯Æ÷·şÎñ";
+    Intro = "½¨Òé½ûÓÃ£¬Õï¶ÏÖĞĞÄ±ê×¼ÊÕ¼¯Æ÷·şÎñ";
 }
 @{
     Name = "DiagTrack";
     DisplayName = "Connected User Experiences and Telemetry";
-    Intro = "å»ºè®®ç¦ç”¨ï¼Œç”¨äºæ”¹è¿› Windows å¹³å°çš„ä½“éªŒå’Œè´¨é‡";
+    Intro = "½¨Òé½ûÓÃ£¬ÓÃÓÚ¸Ä½ø Windows Æ½Ì¨µÄÌåÑéºÍÖÊÁ¿";
 }
 @{
     Name = "dmwappushservice";
     DisplayName = "dmwappushsvc";
-    Intro = "å»ºè®®ç¦ç”¨ï¼ŒWAP æ¨æ¶ˆæ¯è·¯ç”±æœåŠ¡";
+    Intro = "½¨Òé½ûÓÃ£¬WAP ÍÆÏûÏ¢Â·ÓÉ·şÎñ";
 }
 @{
     Name = "lfsvc";
     DisplayName = "Geolocation Service";
-    Intro = "æŒ‰éœ€ç¦ç”¨ï¼Œç”¨äºè·å–å½“ç„¶ä½ç½®ä¿¡æ¯çš„æœåŠ¡ï¼Œç¦ç”¨å°†æ— æ³•å®šä½ç­‰";
+    Intro = "°´Ğè½ûÓÃ£¬ÓÃÓÚ»ñÈ¡µ±È»Î»ÖÃĞÅÏ¢µÄ·şÎñ£¬½ûÓÃ½«ÎŞ·¨¶¨Î»µÈ";
 }
 @{
     Name = "MapsBroker";
     DisplayName = "Downloaded Maps Manager";
-    Intro = "æŒ‰éœ€ç¦ç”¨ï¼Œä¾›åº”ç”¨ç¨‹åºè®¿é—®å·²ä¸‹è½½åœ°å›¾çš„æœåŠ¡ï¼Œç¦ç”¨åº”ç”¨ç¨‹åºå°†æ— æ³•è®¿é—®åœ°å›¾";
+    Intro = "°´Ğè½ûÓÃ£¬¹©Ó¦ÓÃ³ÌĞò·ÃÎÊÒÑÏÂÔØµØÍ¼µÄ·şÎñ£¬½ûÓÃÓ¦ÓÃ³ÌĞò½«ÎŞ·¨·ÃÎÊµØÍ¼";
 }
 @{
     Name = "NetTcpPortSharing";
     DisplayName = "Net.Tcp Port Sharing Service";
-    Intro = "å»ºè®®ç¦ç”¨ï¼Œæä¾›é€šè¿‡ net.tcp åè®®å…±äº« TCP ç«¯å£çš„åŠŸèƒ½";
+    Intro = "½¨Òé½ûÓÃ£¬Ìá¹©Í¨¹ı net.tcp Ğ­Òé¹²Ïí TCP ¶Ë¿ÚµÄ¹¦ÄÜ";
 }
 @{
     Name = "RemoteAccess";
     DisplayName = "Routing and Remote Access";
-    Intro = "å»ºè®®ç¦ç”¨ï¼Œåœ¨å±€åŸŸç½‘ä»¥åŠå¹¿åŸŸç½‘ç¯å¢ƒä¸­ä¸ºä¼ä¸šæä¾›è·¯ç”±æœåŠ¡";
+    Intro = "½¨Òé½ûÓÃ£¬ÔÚ¾ÖÓòÍøÒÔ¼°¹ãÓòÍø»·¾³ÖĞÎªÆóÒµÌá¹©Â·ÓÉ·şÎñ";
 }
 @{
     Name = "RemoteRegistry";
     DisplayName = "Remote Registry";
-    Intro = "å»ºè®®ç¦ç”¨ï¼Œå…è®¸è¿œç¨‹ä¿®æ”¹æ³¨å†Œè¡¨";
+    Intro = "½¨Òé½ûÓÃ£¬ÔÊĞíÔ¶³ÌĞŞ¸Ä×¢²á±í";
 }
 @{
     Name = "SharedAccess";
     DisplayName = "Internet Connection Sharing (ICS)";
-    Intro = "å»ºè®®ç¦ç”¨ï¼Œä¸ºå®¶åº­å’Œå°å‹åŠå…¬ç½‘ç»œæä¾›ç½‘ç»œåœ°å€è½¬æ¢ã€å¯»å€ã€åç§°è§£æå’Œ/æˆ–å…¥ä¾µä¿æŠ¤æœåŠ¡";
+    Intro = "½¨Òé½ûÓÃ£¬Îª¼ÒÍ¥ºÍĞ¡ĞÍ°ì¹«ÍøÂçÌá¹©ÍøÂçµØÖ·×ª»»¡¢Ñ°Ö·¡¢Ãû³Æ½âÎöºÍ/»òÈëÇÖ±£»¤·şÎñ";
 }
 @{
     Name = "TrkWks";
     DisplayName = "Distributed Link Tracking Client";
-    Intro = "å»ºè®®ç¦ç”¨ï¼Œç»´æŠ¤æŸä¸ªè®¡ç®—æœºå†…æˆ–æŸä¸ªç½‘ç»œä¸­çš„è®¡ç®—æœºçš„ NTFS æ–‡ä»¶ä¹‹é—´çš„é“¾æ¥";
+    Intro = "½¨Òé½ûÓÃ£¬Î¬»¤Ä³¸ö¼ÆËã»úÄÚ»òÄ³¸öÍøÂçÖĞµÄ¼ÆËã»úµÄ NTFS ÎÄ¼şÖ®¼äµÄÁ´½Ó";
 }
 @{
     Name = "WbioSrvc";
     DisplayName = "Windows Biometric Service";
-    Intro = "æŒ‰éœ€ç¦ç”¨ï¼Œç”Ÿç‰©è¯†åˆ«æœåŠ¡";
+    Intro = "°´Ğè½ûÓÃ£¬ÉúÎïÊ¶±ğ·şÎñ";
 }
 @{
     Name = "WlanSvc";
     DisplayName = "WLAN AutoConfig";
-    Intro = "æŒ‰éœ€ç¦ç”¨ï¼Œæœ‰æ— çº¿ç½‘å¡å»ºè®®å¼€å¯";
+    Intro = "°´Ğè½ûÓÃ£¬ÓĞÎŞÏßÍø¿¨½¨Òé¿ªÆô";
 }
 @{
     Name = "WMPNetworkSvc";
     DisplayName = "Windows Media Player Network Sharing Service";
-    Intro = "æŒ‰éœ€ç¦ç”¨ï¼Œå³æ’å³ç”¨è®¾å¤‡ä¸å…¶ä»–ç½‘ç»œæ’­æ”¾æœºå’Œåª’ä½“è®¾å¤‡å…±äº«åª’ä½“åº“";
+    Intro = "°´Ğè½ûÓÃ£¬¼´²å¼´ÓÃÉè±¸ÓëÆäËûÍøÂç²¥·Å»úºÍÃ½ÌåÉè±¸¹²ÏíÃ½Ìå¿â";
 }
 @{
     Name = "WSearch";
     DisplayName = "Windows Search";
-    Intro = "æŒ‰éœ€ç¦ç”¨ï¼Œä¸ºæ–‡ä»¶ã€ç”µå­é‚®ä»¶å’Œå…¶ä»–å†…å®¹æä¾›å†…å®¹ç´¢å¼•ã€å±æ€§ç¼“å­˜å’Œæœç´¢ç»“æœ";
+    Intro = "°´Ğè½ûÓÃ£¬ÎªÎÄ¼ş¡¢µç×ÓÓÊ¼şºÍÆäËûÄÚÈİÌá¹©ÄÚÈİË÷Òı¡¢ÊôĞÔ»º´æºÍËÑË÷½á¹û";
 }
 @{
     Name = "XblAuthManager";
-    DisplayName = "Xbox Live èº«ä»½éªŒè¯ç®¡ç†å™¨";
-    Intro = "å»ºè®®ç¦ç”¨";
+    DisplayName = "Xbox Live Éí·İÑéÖ¤¹ÜÀíÆ÷";
+    Intro = "½¨Òé½ûÓÃ";
 }
 @{
     Name = "XblGameSave";
-    DisplayName = "Xbox Live æ¸¸æˆä¿å­˜";
-    Intro = "å»ºè®®ç¦ç”¨";
+    DisplayName = "Xbox Live ÓÎÏ·±£´æ";
+    Intro = "½¨Òé½ûÓÃ";
 }
 @{
     Name = "XboxNetApiSvc";
-    DisplayName = "Xbox Live ç½‘ç»œæœåŠ¡";
-    Intro = "å»ºè®®ç¦ç”¨";
+    DisplayName = "Xbox Live ÍøÂç·şÎñ";
+    Intro = "½¨Òé½ûÓÃ";
 }
 @{
     Name = "DusmSvc";
-    DisplayName = "æ•°æ®ä½¿ç”¨é‡";
-    Intro = "å»ºè®®ç¦ç”¨";
+    DisplayName = "Êı¾İÊ¹ÓÃÁ¿";
+    Intro = "½¨Òé½ûÓÃ";
 }
 @{
     Name = "vmms";
-    DisplayName = "Hyper-V è™šæ‹Ÿæœºç®¡ç†";
-    Intro = "å»ºè®®ç¦ç”¨";
+    DisplayName = "Hyper-V ĞéÄâ»ú¹ÜÀí";
+    Intro = "½¨Òé½ûÓÃ";
 }
 @{
     Name = "CDPSvc";
-    DisplayName = "è¿æ¥è®¾å¤‡å¹³å°æœåŠ¡";
-    Intro = "å»ºè®®ç¦ç”¨";
+    DisplayName = "Á¬½ÓÉè±¸Æ½Ì¨·şÎñ";
+    Intro = "½¨Òé½ûÓÃ";
 }
 )
 
 foreach ($Service in $Services)
 {
-    $reply = Read-Host "æ˜¯å¦ç¦ç”¨ - $( $Service.DisplayName ) - $( $Service.Intro ) [Y/n]"
+    $reply = Read-Host "ÊÇ·ñ½ûÓÃ - $( $Service.DisplayName ) - $( $Service.Intro ) [Y/n]"
     if ($reply -match "[yY]")
     {
         Get-Service -Name $Service.Name | Set-Service -StartupType Disabled
     }
     else
     {
-        Write-Warning -Message "è·³è¿‡äº† $( $Service.DisplayName ) æœåŠ¡"
+        Write-Warning -Message "Ìø¹ıÁË $( $Service.DisplayName ) ·şÎñ"
     }
 }
