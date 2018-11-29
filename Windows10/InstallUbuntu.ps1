@@ -1,64 +1,54 @@
 ###############
-# Name: Install Windows 10 SubSystem Ubuntu
+# Name: Install Windows 10 SubSystem Ubuntu16
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
 ###############
 
-$ProgressPreference = 'SilentlyContinue'
+# 设置 Ubuntu 变量
+if ( [String]::IsNullOrEmpty($env:UbuntuPackagePath))
+{
+    $env:UbuntuPackagePath = Read-Host "Please enter package path"
+}
+if ( [String]::IsNullOrEmpty($env:UbuntuInstallPath))
+{
+    $env:UbuntuInstallPath = Read-Host "Please enter install path"
+}
 
-# 设置 Ubuntu 相关变量
-if ( [String]::IsNullOrEmpty($env:UbuntuUri))
-{
-    $env:UbuntuUri = 'https://aka.ms/wsl-ubuntu-1604'
-}
-if ( [String]::IsNullOrEmpty($env:UbuntuInstallDir))
-{
-    $env:UbuntuInstallDir = $env:USERPROFILE + '\Ubuntu'
-}
-if ( [String]::IsNullOrEmpty($env:UbuntuDownloadPath))
-{
-    $env:UbuntuDownloadPath = $env:USERPROFILE + '\Ubuntu.zip'
-}
-echo 'Ubuntu app install dir: ' + $env:UbuntuInstallDir
-echo 'Ubuntu app download path: ' + $env:UbuntuDownloadPath
-echo 'Ubuntu app uri: ' + $env:UbuntuUri
+# 变量提示
+echo 'Ubuntu package path: ' + $env:UbuntuPackagePath
+echo 'Ubuntu install path: ' + $env:UbuntuInstallPath
 
-# 下载应用
-if (-Not(Test-Path $env:UbuntuDownloadPath))
+### 校验变量
+if (-Not(Test-Path $env:UbuntuPackagePath))
 {
-    echo 'Ubuntu app downloading ......'
-    Invoke-WebRequest -Uri $env:UbuntuUri -OutFile $env:UbuntuDownloadPath -UseBasicParsing
+    Write-Warning -Message "Ubuntu package path does not exist"
+    return
 }
 
 # 校验应用
-if ((Get-FileHash $env:UbuntuDownloadPath -Algorithm MD5).Hash -ne 'F59BD7D5A8BE43E4E3F42C71640D2D17')
+if ((Get-FileHash $env:UbuntuPackagePath -Algorithm MD5).Hash -ne 'F59BD7D5A8BE43E4E3F42C71640D2D17')
 {
-    echo 'File md5 check failure'
-    exit (1)
-}
-else
-{
-    echo 'Ubuntu app check ok'
+    Write-Warning -Message "Ubuntu package file md5 check failure"
+    return
 }
 
 # 解压应用
-if (-Not(Test-Path $env:UbuntuInstallDir))
+if (-Not(Test-Path $env:UbuntuInstallPath\ubuntu.exe))
 {
     echo 'Ubuntu app unzip ......'
-    Expand-Archive $env:UbuntuDownloadPath $env:UbuntuInstallDir
-}
-else
-{
-    echo 'Ubuntu app install dir exist, skip unzip'
+    Expand-Archive $env:UbuntuPackagePath $env:UbuntuInstallPath
 }
 
 # 清理旧的应用
-echo 'Ubuntu app clean ......'
-Start-Process $env:UbuntuInstallDir\ubuntu.exe clean -Wait
+if (Test-Path $env:UbuntuInstallPath\rootfs)
+{
+    echo 'Ubuntu app clean ......'
+    Start-Process $env:UbuntuInstallPath\ubuntu.exe clean -Wait
+}
 
 # 运行应用
 echo 'Ubuntu app run ......'
-Start-Process $env:UbuntuInstallDir\ubuntu.exe -Wait
+Start-Process $env:UbuntuInstallPath\ubuntu.exe -Wait
 
 # 安装完成
 echo 'Ubuntu app install complete'
