@@ -21,7 +21,7 @@ modules=(
     "cli" "common" "fpm" "dev" "mysql" "sqlite3" "curl" "gd" "mbstring" "json" "ldap" "opcache"
     "pgsql" "readline" "bcmath" "mcrypt" "soap" "zip" "xml"
 )
-versions=("5.6" "7.0" "7.1")
+versions=("5.6" "7.2")
 packages=()
 installs=()
 
