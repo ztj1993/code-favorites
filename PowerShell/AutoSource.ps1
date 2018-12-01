@@ -5,7 +5,7 @@
 # Use: PowerShell iex(New-Object Net.WebClient).DownloadString('https://dwz.cn/mPPBKOv2')
 ###############
 
-function AutoSource($FilePath, $LocalPath, $RemoteUri)
+function AutoSource($FilePath, $LocalPath, $RemoteUri, $arguments)
 {
     # 设置默认本地路径
     if (($LocalPath -eq "") -or ($LocalPath -eq $null))
@@ -20,10 +20,11 @@ function AutoSource($FilePath, $LocalPath, $RemoteUri)
     # 脚本执行
     if (Test-Path "$LocalPath/$FilePath")
     {
-        . "$LocalPath/$FilePath"
+        $Script = (New-Object Net.WebClient).DownloadString("$LocalPath/$FilePath")
     }
     else
     {
-        iex(New-Object Net.WebClient).DownloadString("$RemoteUri/$FilePath")
+        $Script = (New-Object Net.WebClient).DownloadString("$RemoteUri/$FilePath")
     }
+    Invoke-Command -ScriptBlock ([ScriptBlock]::Create($Script)) -ArgumentList $arguments
 }
