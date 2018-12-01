@@ -2,7 +2,7 @@
 # Name: Is Administrator
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
-# Use: PowerShell iex(New-Object Net.WebClient).DownloadString('http://dwz.cn/XF8rOhGn')
+# Use: PowerShell iex(New-Object Net.WebClient).DownloadString('https://dwz.cn/lVFCvC1t')
 ###############
 
 $windowsIdentity = [System.Security.Principal.WindowsIdentity]::GetCurrent()
