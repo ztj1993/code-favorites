@@ -4,6 +4,7 @@
 # Name: 安装 Ppa 软件
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
+# Use: curl -sSL https://dwz.cn/Q0OPkbYu > /tmp/Ppa && bash /tmp/Ppa
 ###############
 
 ### 设置快速安装

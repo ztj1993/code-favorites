@@ -49,6 +49,7 @@ done
 if [ ${#installs[@]} -ne 0 ]; then
     echo ">>> Installs: ${installs[*]}"
     sudo apt-get install -y ${installs[*]}
+    [ $? -ne 0 ] && exit 1
 fi
 
 ### 选择主版本
