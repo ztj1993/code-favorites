@@ -11,48 +11,23 @@
  */
 function time_use_region_judge($used_times, $start_time, $end_time)
 {
-    //升序排序
-    $used_start_times = array_keys($used_times);
-    sort($used_start_times);
-    //循环并判定时间段
-    reset($used_start_times);
-    while ($used_start_time = current($used_start_times)) {
-        //当 已使用开始时间 大于 开始时间
-        if ($used_start_time > $start_time) {
-            //最大结束时间
-            $max_end_time = $used_start_time;
-            //是否存在上一个时间段
-            if ($prev_used_start_time = prev($used_start_times)) {
-                //存在上一个时间段，最小开始时间为 上一个 已使用结束时间
-                $min_start_time = $used_times[$prev_used_start_time];
-                //时间判断定
-                if ($start_time >= $min_start_time && $max_end_time >= $end_time) {
-                    return true;
-                } else {
-                    return false;
-                }
-            } else {
-                //不存在上一个时间段，判定 最大结束时间 大于 结束时间
-                if ($max_end_time >= $end_time) {
-                    return true;
-                } else {
-                    return false;
-                }
-            }
-        }
-        //最后一次循环处理
-        if (!next($used_start_times)) {
-            //获取 上一次 已使用时间
-            $prev_used_start_time = end($used_start_times);
-            //获取 最小开始时间
-            $min_start_time = $used_times[$prev_used_start_time];
-            //开始时间 大于 最小开始时间
-            if ($start_time >= $min_start_time) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+    //如果存在相同的开始时间，直接返回 false
+    if (isset($used_times[$start_time])) return false;
+    //获取所有的开始时间
+    $start_times = array_keys($used_times);
+    //将开始时间加入开始时间中
+    array_push($start_times, $start_time);
+    //升序排序时间
+    sort($start_times);
+    //获取当前选择时间位置
+    $index = array_search($start_time, $start_times);
+    //判断开始时间
+    if ($index > 0 && $used_times[$start_times[$index - 1]] > $start_time) {
+        return false;
+    }
+    //判断结束时间
+    if (isset($start_times[$index + 1]) && $start_times[$index + 1] < $end_time) {
+        return false;
     }
     return true;
 }
