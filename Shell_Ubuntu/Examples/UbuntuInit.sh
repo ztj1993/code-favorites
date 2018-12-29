@@ -17,4 +17,4 @@ curl -sSL "${BaseUri}/SelfUserSudo.sh" > /tmp/SelfUserSudo && bash /tmp/SelfUser
 curl -sSL "${BaseUri}/AllowRootSsh.sh" > /tmp/AllowRootSsh && bash /tmp/AllowRootSsh
 
 ### 更新系统
-sudo apt-get -y update
+apt-get -y update

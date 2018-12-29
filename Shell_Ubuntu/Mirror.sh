@@ -46,10 +46,10 @@ deb-src http://mirrors.aliyun.com/ubuntu/ bionic-backports main restricted unive
 ### 判断是否有匹配的镜像源
 OS_VERSION=$(cat /etc/os-release | grep VERSION_ID | cut -d '"' -f 2 |  awk -F'.' '{ print $1 }')
 
-echo "$(eval echo \"\${mirror_${OS_VERSION}}\")" | sudo tee /etc/apt/sources.list
+echo "$(eval echo \"\${mirror_${OS_VERSION}}\")" | tee /etc/apt/sources.list
 
 sleep 2
 
-sudo apt-get update
+apt-get update
 
 sleep 2

@@ -12,15 +12,15 @@ MirrorDir="/var/cache/apt/archives_mirror"
 
 ### 安装软件
 type dpkg-scanpackages > /dev/null 2>&1
-[ $? -ne 0 ] && sudo apt-get install -y dpkg-dev
+[ $? -ne 0 ] && apt-get install -y dpkg-dev
 
 ### 清理设置目录
-sudo rm -rf /var/cache/apt/archives_mirror
-sudo mkdir /var/cache/apt/archives_mirror
+rm -rf /var/cache/apt/archives_mirror
+mkdir /var/cache/apt/archives_mirror
 
 ### 制作映像源
-sudo cp /var/cache/apt/archives/*.deb ${MirrorDir}
-dpkg-scanpackages ${MirrorDir} /dev/null | sudo tee ${MirrorDir}/Packages
+cp /var/cache/apt/archives/*.deb ${MirrorDir}
+dpkg-scanpackages ${MirrorDir} /dev/null | tee ${MirrorDir}/Packages
 cat ${MirrorDir}/Packages | sed "s/Filename: \.\//Filename: /g"
-sudo sed -i "s@${MirrorDir}/@@" ${MirrorDir}/Packages
-sudo gzip ${MirrorDir}/Packages
+sed -i "s@${MirrorDir}/@@" ${MirrorDir}/Packages
+gzip ${MirrorDir}/Packages

@@ -9,12 +9,12 @@
 
 ### 导入密钥
 apt-key list | grep "E5267A6C" > /dev/null 2>&1
-[ $? -ne 0 ] && sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
+[ $? -ne 0 ] && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 4F4EA0AAE5267A6C
 
 ### 设置镜像源
 PhpMirror=${PhpMirror:-"deb http://ppa.launchpad.net/ondrej/php/ubuntu/ $(lsb_release -sc) main"}
-echo "${PhpMirror}" | sudo tee /etc/apt/sources.list.d/php.list
-sudo apt-get -y update
+echo "${PhpMirror}" | tee /etc/apt/sources.list.d/php.list
+apt-get -y update
 
 ### 设置变量
 modules=(
@@ -48,7 +48,7 @@ done
 ### 安装软件
 if [ ${#installs[@]} -ne 0 ]; then
     echo ">>> Installs: ${installs[*]}"
-    sudo apt-get install -y ${installs[*]}
+    apt-get install -y ${installs[*]}
     [ $? -ne 0 ] && exit 1
 fi
 
@@ -60,16 +60,16 @@ apache2 -v > /dev/null 2>&1
 if [ $? -eq 0 ]; then
     for version in ${versions[@]}
     do
-        sudo a2dismod "php${version}"
+        a2dismod "php${version}"
     done
-    sudo a2enmod php${PhpMainVersion}
-    sudo service apache2 restart
+    a2enmod php${PhpMainVersion}
+    service apache2 restart
 fi
 
 # 设置 Cli
-sudo update-alternatives --set php /usr/bin/php${PhpMainVersion}
-sudo update-alternatives --set phpize /usr/bin/phpize${PhpMainVersion}
-sudo update-alternatives --set php-config /usr/bin/php-config${PhpMainVersion}
+update-alternatives --set php /usr/bin/php${PhpMainVersion}
+update-alternatives --set phpize /usr/bin/phpize${PhpMainVersion}
+update-alternatives --set php-config /usr/bin/php-config${PhpMainVersion}
 
 # 删除配置文件
-sudo rm -rf /etc/apt/sources.list.d/php.list
+rm -rf /etc/apt/sources.list.d/php.list

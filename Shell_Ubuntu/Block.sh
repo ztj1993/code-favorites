@@ -8,4 +8,4 @@
 
 ##### 解决 Dash Bash 问题 #####
 # Use: curl -sSL http://dwz.cn/m155AE9N | sed -n '11, 11p' | bash
-sudo ln -fs /bin/bash /bin/sh
+ln -fs /bin/bash /bin/sh

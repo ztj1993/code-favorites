@@ -9,14 +9,14 @@
 
 ### 设置镜像源
 NginxMirror=${NginxMirror:-"deb http://nginx.org/packages/ubuntu/ $(lsb_release -sc) nginx"}
-echo "${NginxMirror}" | sudo tee /etc/apt/sources.list.d/nginx.list
-sudo apt-get -y update
+echo "${NginxMirror}" | tee /etc/apt/sources.list.d/nginx.list
+apt-get -y update
 
 ### 导入密钥
 wget -qO- http://nginx.org/keys/nginx_signing.key | apt-key add -
 
 ### 安装 Nginx
-sudo apt-get -y install nginx
+apt-get -y install nginx
 
 # 删除配置文件
-sudo rm -rf /etc/apt/sources.list.d/nginx.list
+rm -rf /etc/apt/sources.list.d/nginx.list

@@ -15,18 +15,18 @@ SoftwarePackagePath="/tmp/phpMyAdmin-${SoftwareVersion}-all-languages.tar.gz"
 SoftwareInstallPath="${ShellDir}/phpMyAdmin"
 
 ### 下载文件
-sudo rm -rf ${SoftwarePackagePath}
-sudo wget -O ${SoftwarePackagePath} ${SoftwareUrl}
+rm -rf ${SoftwarePackagePath}
+wget -O ${SoftwarePackagePath} ${SoftwareUrl}
 
 ### 解压文件
-sudo rm -rf ${SoftwareInstallPath}
-sudo mkdir -p ${SoftwareInstallPath}
-sudo tar -xf ${SoftwarePackagePath} --strip-components 1 -C ${SoftwareInstallPath}
-sudo chown -R 777 ${SoftwareInstallPath}
+rm -rf ${SoftwareInstallPath}
+mkdir -p ${SoftwareInstallPath}
+tar -xf ${SoftwarePackagePath} --strip-components 1 -C ${SoftwareInstallPath}
+chown -R 777 ${SoftwareInstallPath}
 
 ### 配置
 echo "
 <?php
 \$cfg['LoginCookieValidity'] = 144000;
 \$cfg['AllowArbitraryServer'] = true;
-" | sudo tee ${SoftwareInstallPath}/config.inc.php
+" | tee ${SoftwareInstallPath}/config.inc.php

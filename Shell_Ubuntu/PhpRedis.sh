@@ -29,16 +29,16 @@ phpize
 [ $? -ne 0 ] && echo ">>>>>> Error:$(basename ${BASH_SOURCE[0]%.*}) - ($LINENO)" && exit 1
 make
 [ $? -ne 0 ] && echo ">>>>>> Error:$(basename ${BASH_SOURCE[0]%.*}) - ($LINENO)" && exit 1
-sudo make install
+make install
 [ $? -ne 0 ] && echo ">>>>>> Error:$(basename ${BASH_SOURCE[0]%.*}) - ($LINENO)" && exit 1
 
 ### 配置软件
-echo "extension=redis.so" | sudo tee ${phpEtcPath}/mods-available/redis.ini
+echo "extension=redis.so" | tee ${phpEtcPath}/mods-available/redis.ini
 for dir in $(ls ${phpEtcPath})
 do
     [ "${dir}" == "mods-available" ] && continue
     if [ -d ${phpEtcPath}/${dir}/conf.d ]; then
-        sudo rm -rf ${phpEtcPath}/${dir}/conf.d/redis.ini
-        sudo ln -s ${phpEtcPath}/mods-available/redis.ini ${phpEtcPath}/${dir}/conf.d/redis.ini
+        rm -rf ${phpEtcPath}/${dir}/conf.d/redis.ini
+        ln -s ${phpEtcPath}/mods-available/redis.ini ${phpEtcPath}/${dir}/conf.d/redis.ini
     fi
 done

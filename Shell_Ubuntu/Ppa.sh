@@ -43,14 +43,14 @@ fi
 ### 设置镜像源
 echo "
 deb http://ppa.launchpad.net/${UserName}/${ProjectName}/ubuntu $(lsb_release -sc) main
-" | sudo tee "/etc/apt/sources.list.d/${SoftwareName}.list"
+" | tee "/etc/apt/sources.list.d/${SoftwareName}.list"
 
 ### 设置项目密钥
-sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com ${ProjectKey}
+apt-key adv --recv-keys --keyserver keyserver.ubuntu.com ${ProjectKey}
 
 ### 安装软件
-sudo apt-get -y update
-sudo apt-get install -y ${Packages}
+apt-get -y update
+apt-get install -y ${Packages}
 
 ### 清理文件
-sudo rm rf "/etc/apt/sources.list.d/${SoftwareName}.list"
+rm rf "/etc/apt/sources.list.d/${SoftwareName}.list"

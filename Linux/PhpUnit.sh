@@ -13,14 +13,14 @@ SoftwarePackagePath="/tmp/phpunit.phar"
 SoftwareInstallPath="/usr/local/bin/phpunit"
 
 ### 环境处理
-sudo rm -rf ${SoftwarePackagePath}
-sudo rm -rf ${SoftwareInstallPath}
+rm -rf ${SoftwarePackagePath}
+rm -rf ${SoftwareInstallPath}
 
 ### 下载文件
 wget -O ${SoftwarePackagePath} ${SoftwareUrl}
 
 ### 复制文件
-sudo cp ${SoftwarePackagePath} ${SoftwareInstallPath}
+cp ${SoftwarePackagePath} ${SoftwareInstallPath}
 
 ### 配置文件
-sudo chmod +x ${SoftwareInstallPath}
+chmod +x ${SoftwareInstallPath}
