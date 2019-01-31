@@ -123,7 +123,7 @@ function stop(){
     rm -rf "$(get_daemon_file)"
 }
 function install(){
-    echo ${script_path}
+    rm -rf /usr/local/bin/ssh_to_socks
     cp ${script_path} /usr/local/bin/ssh_to_socks
     chmod 755 /usr/local/bin/ssh_to_socks
 }
