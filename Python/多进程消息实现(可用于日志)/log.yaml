@@ -1,0 +1,34 @@
+version: 1
+formatters:
+  simple:
+    format: '%(asctime)s - %(levelname)s - %(message)s'
+  standard:
+    format: '%(asctime)s - %(name)s - %(filename)s:%(lineno)d - %(levelname)s - %(message)s'
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: standard
+    stream: ext://sys.stdout
+  info:
+    backupCount: 7
+    level: INFO
+    interval: 1
+    when: midnight
+    filename: info.log
+    formatter: simple
+    class: logging.handlers.TimedRotatingFileHandler
+  error:
+    backupCount: 7
+    level: ERROR
+    interval: 1
+    when: midnight
+    filename: error.log
+    formatter: standard
+    class: logging.handlers.TimedRotatingFileHandler
+root:
+  level: DEBUG
+  handlers: [console, info, error]
+loggers:
+  oss2:
+    level: CRITICAL
