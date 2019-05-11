@@ -126,6 +126,12 @@ function install(){
     rm -rf /usr/local/bin/ssh_to_socks
     cp ${script_path} /usr/local/bin/ssh_to_socks
     chmod 755 /usr/local/bin/ssh_to_socks
+    apt-get install sshpass
+}
+function help(){
+    echo ">>> Example: ssh_to_socks options_socks_bind {address} {port}"
+    echo ">>> Example: ssh_to_socks options_ssh_server {host} {port}"
+    echo ">>> Example: ssh_to_socks options_ssh_auth {user} {pass}"
 }
 
 ### run command
