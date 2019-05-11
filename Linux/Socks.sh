@@ -2,7 +2,7 @@
 
 ###############
 # Name: ssh to socks
-# Author: ZhangTianJie
+# Author: Ztj
 # Email: ztj1993@gmail.com
 # Use: curl -sSL https://dwz.cn/wut41WR0 > /tmp/Socks && bash /tmp/Socks install
 ###############
@@ -40,7 +40,7 @@ function get_ssh_command(){
 }
 function is_started(){
     pgrep -f "$(get_ssh_command)" > /dev/null
-    if [ $? == 0 ]; then
+    if [[ $? == 0 ]]; then
         echo "yes"
     else
         echo "no"
@@ -59,14 +59,14 @@ function options_make(){
     echo ">>> Info: make options file success"
 }
 function options_source(){
-    if [ -f $(get_options_file) ]; then
+    if [[ -f $(get_options_file) ]]; then
         source $(get_options_file)
     else
         options_make
     fi
 }
 function options_socks_bind(){
-    if [ "${1}" = "--help" ] ; then
+    if [[ "${1}" = "--help" ]] ; then
         echo ">>> Example: ssh_to_socks ${FUNCNAME} {address} {port}" && return 0
     fi
 
@@ -77,7 +77,7 @@ function options_socks_bind(){
     options_make
 }
 function options_ssh_server(){
-    if [ "${1}" = "--help" ] ; then
+    if [[ "${1}" = "--help" ]] ; then
         echo ">>> Example: ssh_to_socks ${FUNCNAME} {host} {port}" && return 0
     fi
 
@@ -88,7 +88,7 @@ function options_ssh_server(){
     options_make
 }
 function options_ssh_auth(){
-    if [ "${1}" = "--help" ] ; then
+    if [[ "${1}" = "--help" ]] ; then
         echo ">>> Example: ssh_to_socks ${FUNCNAME} {user} {pass}" && return 0
     fi
 
@@ -102,15 +102,15 @@ function daemon(){
     # listen
     {
         touch $(get_daemon_file)
-        while [ -f $(get_daemon_file) ]; do
-            [ "$(is_started)" == "no" ] && start
+        while [[ -f $(get_daemon_file) ]]; do
+            [[ "$(is_started)" == "no" ]] && start
             sleep 60
         done
     } &
 }
 function start(){
     # is started
-    if [ "$(is_started)" == "yes" ];then
+    if [[ "$(is_started)" == "yes" ]];then
         echo ">>> Error: service has been started." && return 1
     fi
 
@@ -129,11 +129,11 @@ function install(){
 }
 
 ### run command
-if [ "$(type -t ${alias})" = "function" ] ; then
+if [[ "$(type -t ${alias})" = "function" ]] ; then
     command=${alias} && alias=default
     options_source
     ${command} ${@:2}
-elif [ "$(type -t ${command})" = "function" ] ; then
+elif [[ "$(type -t ${command})" = "function" ]] ; then
     options_source
     ${command} ${@:3}
 else
