@@ -1,0 +1,10 @@
+redis_server.delete('test')
+
+redis_server.rpush('test', '1', '2', '3')
+redis_server.rpush('test', '4')
+redis_server.rpush('test', '5')
+print(redis_server.lrange('test', 0, 4))
+redis_server.rpush('test', '6')
+redis_server.rpush('test', '7')
+print(redis_server.ltrim('test', 5, -1))
+print(redis_server.lrange('test', 0, -1))
