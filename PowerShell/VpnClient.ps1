@@ -2,6 +2,7 @@
 # Name: Windows 10 创建 VPN 客户端
 # Author: ZhangTianJie
 # Email: ztj1993@gmail.com
+# Use: PowerShell iex(New-Object Net.WebClient).DownloadString('https://dwz.cn/CxHFkLgw')
 ###############
 
 $Name = Read-Host -Prompt '请输入 VPN 名称'
