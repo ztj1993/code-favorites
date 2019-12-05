@@ -1,5 +1,6 @@
 import signal
 import time
+import threading
 
 
 class App(object):
@@ -11,6 +12,7 @@ class App(object):
         is_listen and self.listen()
 
     def exit(self, signum, frame):
+        print('stop......')
         self.is_run = False
 
     def listen(self):
