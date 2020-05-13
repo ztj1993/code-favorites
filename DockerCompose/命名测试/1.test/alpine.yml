@@ -1,0 +1,10 @@
+version: "3"
+services:
+
+  alpine:
+    image: alpine
+    hostname: alpine
+    tty: true
+    environment:
+      - VPN_PASSWORD=${PUBLIC_PWD:-ztj123}
+
