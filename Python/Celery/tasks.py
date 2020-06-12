@@ -5,7 +5,7 @@ from __future__ import absolute_import, unicode_literals
 
 import time
 
-from .celery import app
+from env import app
 
 
 @app.task
