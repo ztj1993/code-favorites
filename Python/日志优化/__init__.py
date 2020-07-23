@@ -1,6 +1,7 @@
 import json
 import logging
 import threading
+import time
 
 
 class JsonLogger(logging.Logger):
@@ -12,6 +13,11 @@ class JsonLogger(logging.Logger):
 
     def local(self, k, v):
         self._local.__setattr__(k, v)
+
+    def get(self, k):
+        if hasattr(self._local, k):
+            return self._local.__getattribute__(k)
+        return self._glob.get(k)
 
     def handle(self, record):
         for k, v in self._glob.items():
@@ -55,21 +61,21 @@ handler.setFormatter(JsonFormatter())
 logger = JsonLogger(__name__)
 logger.addHandler(handler)
 
-logger.glob('glob', 'bbb')
-
-logger.info('这是一条测试日志')
+logger.glob('全局参数', '这是一个全局参数，在所有的线程中有效')
+logger.info('主线程日志输出')
 
 
 def thread_1():
-    logger.local('local', 'thread_1')
-    logger.info('thread_1')
+    logger.local('局部参数', '这是一个局部的参数，只在线程一日志中有效')
+    logger.info('线程一日志输出')
 
 
 def thread_2():
-    logger.info('thread_2')
+    logger.info('线程二日志输出')
 
 
 t1 = threading.Thread(target=thread_1, args=())
 t2 = threading.Thread(target=thread_2, args=())
 t1.start()
+time.sleep(1)
 t2.start()
