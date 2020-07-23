@@ -29,6 +29,7 @@ class JsonFormatter(logging.Formatter):
         record.thread_name = record.threadName
         record.process_name = record.processName
         record.func_name = record.funcName
+        record.line_no = record.lineno
         record.level_no = record.levelno
         record.level_name = record.levelname
         record.path_name = record.pathname
