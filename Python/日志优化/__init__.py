@@ -43,7 +43,7 @@ class JsonFormatter(logging.Formatter):
         record.processName = None
         record.pathname = None
 
-        record = ({k: v for k, v in record.__dict__.items() if v})
+        record = {k: v for k, v in record.__dict__.items() if v}
         return json.dumps(record, ensure_ascii=False)
 
 
